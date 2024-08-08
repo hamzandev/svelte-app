@@ -1,5 +1,7 @@
 <script>
+  import {Button} from "$lib/components/ui/button";
   import {afterUpdate, beforeUpdate, onDestroy, onMount} from "svelte";
+  import Counter from "../../components/custom/Counter.svelte";
 
   //onMount
   onMount(async () => {
@@ -24,4 +26,7 @@
 
 <div>
   <h1>Users</h1>
+  <br /><br />
+  <Counter name="Zannns" />
+  <Counter name="Another Zannns" />
 </div>
