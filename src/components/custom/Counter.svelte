@@ -17,7 +17,7 @@
   $: titleMessage = formatTitle(name);
 </script>
 
-<div class="my-3 border-2 border-muted p-3 w-[320px]">
+<div class="my-3 border-2 border-muted p-3 rounded">
   <h1 class="text-2xl font-bold">{titleMessage}</h1>
   <p class="text-lg">Count: {countState}</p>
   <Button on:click={handleClick}>Increase Count</Button>
