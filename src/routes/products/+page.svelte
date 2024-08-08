@@ -31,9 +31,9 @@
   ];
 
   $: totalProducts = products.length;
-  $: totalPrice = `$${products.reduce(function (total, product) {
+  $: totalPrice = products.reduce(function (total, product) {
     return total + product.price;
-  }, 0)}`;
+  }, 0);
 
   let newProduct: Product = {
     id: products.length + 1,
@@ -42,7 +42,7 @@
   };
 
   function handleSubmit() {
-    products = [...products, newProduct];
+    products = [...products, {...newProduct, price: Number(newProduct.price)}];
     newProduct = {id: products.length + 1, name: "", price: 0};
   }
 </script>
@@ -55,7 +55,7 @@
       Total Products : {totalProducts}
     </span>
     <span class="uppercase font-bold text-green-500">
-      Total Price : {totalPrice}
+      Total Price : ${totalPrice}
     </span>
   </div>
 
