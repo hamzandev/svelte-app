@@ -3,11 +3,11 @@
   import ModeSwitcher from "$lib/components/ModeSwitcher.svelte";
   import {Input} from "$lib/components/ui/input";
   import logo from "$lib/images/svelte-logo.svg";
+  import {setContext} from "svelte";
+  import type {Link} from "../../types";
+  import CartButton from "../custom/CartButton.svelte";
 
-  interface Link {
-    label: string;
-    url: string;
-  }
+  setContext("cart-ctx", 12);
 
   const links: Array<Link> = [
     {
@@ -63,7 +63,10 @@
 
     <div class="w-4/12 flex justify-end space-x-2 items-center">
       <Input placeholder="🔍 Search..." type="search" />
-      <ModeSwitcher />
+      <span class="inline-block">
+        <ModeSwitcher />
+      </span>
+      <CartButton />
     </div>
   </div>
 </header>

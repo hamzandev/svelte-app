@@ -5,3 +5,16 @@ export interface User {
     married?: boolean;
     languages?: [];
 }
+
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+    detail?: string;
+}
+
+
+export interface Link {
+    label: string;
+    url: string;
+}

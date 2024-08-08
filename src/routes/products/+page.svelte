@@ -2,33 +2,15 @@
   import {Button, buttonVariants} from "$lib/components/ui/button";
   import {Input} from "$lib/components/ui/input";
   import {cn} from "$lib/utils";
+  import ProductCard from "../../components/custom/ProductCard.svelte";
+  import {products as fetchedProducts} from "../../data/product";
+  import type {Product} from "../../types";
 
-  interface Product {
-    id: number;
-    name: string;
-    price: number;
-    detail?: string;
+  function fetchProducts(): Product[] {
+    return fetchedProducts;
   }
 
-  let products: Array<Product> = [
-    {
-      id: 1,
-      name: "Product 1",
-      price: 1000,
-      detail: "Product 1 Detail",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      price: 2000,
-      detail: "Product 2 Detail",
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      price: 3000,
-    },
-  ];
+  let products: Product[] = fetchProducts();
 
   $: totalProducts = products.length;
   $: totalPrice = products.reduce(function (total, product) {
@@ -46,6 +28,11 @@
     newProduct = {id: products.length + 1, name: "", price: 0};
   }
 </script>
+
+<s-head>
+  <title>Products</title>
+  <meta name="description" content="Products" />
+</s-head>
 
 <div>
   <h1 class="text-2xl font-bold">Products</h1>
@@ -81,17 +68,7 @@
 
   <div class="my-5 grid md:grid-cols-3 gap-5">
     {#each products as product (product.id)}
-      <div class="p-3 rounded-lg border-2 border-muted grid">
-        <h3 class="text-lg font-bold">{product.name}</h3>
-        <h5 class="text-secondary-foreground">${product.price}</h5>
-        <p class="text-sm text-muted-foreground">{product?.detail ?? "-"}</p>
-        <a
-          href={`/products/${product.id}`}
-          class={cn(buttonVariants({size: "sm"}), "place-self-end")}
-        >
-          Detail
-        </a>
-      </div>
+      <ProductCard {product} />
     {/each}
   </div>
 </div>
