@@ -23,6 +23,10 @@
       url: "/products",
     },
     {
+      label: "Users",
+      url: "/users",
+    },
+    {
       label: "Hello World",
       url: "/hello-world",
     },
