@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {goto, beforeNavigate, afterNavigate} from "$app/navigation";
   import {Button} from "$lib/components/ui/button";
   import {Input} from "$lib/components/ui/input";
   import {Label} from "$lib/components/ui/label";
@@ -12,8 +13,16 @@
   };
 
   function handleSubmit() {
-    alert(JSON.stringify(userFormData));
+    goto("/users/created");
   }
+
+  beforeNavigate(function (navigation) {
+    console.log({beforeNavigate: navigation});
+  });
+
+  afterNavigate(function (navigation) {
+    console.log({afterNavigate: navigation});
+  });
 </script>
 
 <main>
